@@ -37,11 +37,12 @@ function App() {
         <header className="container">
           <nav className="nav">
             <div className="logo">ZimAI</div>
+
             <div className="nav-links">
-              <a href="#"></a>
-              <a href="#">Products</a>
-              <a href="#">Company</a>
-              <a href="#">Resources</a>
+              <a href="https://seliger-boat.netlify.app/">ONE</a>
+              <a href="https://seliger-boat.netlify.app/">Products</a>
+              <a href="https://seliger-boat.netlify.app/">Company</a>
+              <a href="https://seliger-boat.netlify.app/">Resources</a>
             </div>
           </nav>
         </header>
@@ -58,7 +59,7 @@ function App() {
               <br />
               to accelerate human scientific discovery.
             </p>
-            <a href="#" className="btn">
+            <a href="https://seliger-boat.netlify.app/" className="btn">
               Explore ZimAI →
             </a>
           </section>
@@ -73,7 +74,7 @@ function App() {
                   <br />
                   available across web, iOS, Android & X
                 </p>
-                <a href="#" className="btn">
+                <a href="https://seliger-boat.netlify.app/" className="btn">
                   Try ZimAI
                 </a>
               </div>
@@ -85,7 +86,7 @@ function App() {
                   <br />
                   with enhanced reasoning & speed
                 </p>
-                <a href="#" className="btn">
+                <a href="https://seliger-boat.netlify.app/" className="btn">
                   Get API access
                 </a>
               </div>
@@ -97,7 +98,7 @@ function App() {
                   <br />
                   in the world — expanding rapidly
                 </p>
-                <a href="#" className="btn">
+                <a href="https://seliger-boat.netlify.app/" className="btn">
                   Learn more
                 </a>
               </div>
