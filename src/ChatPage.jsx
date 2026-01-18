@@ -49,7 +49,7 @@ export default function ChatPage({ onBack }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "llama-3.1-70b-versatile", //"grok-beta", // или grok-2-latest, grok-3-mini и т.д.
+          model: "Llama-3.3-70B", //"grok-beta", // или grok-2-latest, grok-3-mini и т.д.
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             ...messages,
