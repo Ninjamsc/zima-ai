@@ -1,6 +1,6 @@
 // const fetch = require("node-fetch"); // или используй встроенный fetch в Node 18+
 
-const key = "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";
+const key = "";
 
 fetch("https://api.groq.com/openai/v1/chat/completions", {
   method: "POST",
