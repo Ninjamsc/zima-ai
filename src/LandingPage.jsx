@@ -38,9 +38,9 @@ export default function LandingPage({ onTryChat }) {
           <nav className="nav">
             <div className="logo">ZimAI</div>
             <div className="nav-links">
-              <a href="#">Products</a>
-              <a href="#">About</a>
-              <a href="#">Contact</a>
+              <a href="zima-ai.netlify.app">Products</a>
+              <a href="zima-ai.netlify.app">About</a>
+              <a href="zima-ai.netlify.app">Contact</a>
             </div>
           </nav>
         </header>
@@ -71,13 +71,13 @@ export default function LandingPage({ onTryChat }) {
               <div className="product-card">
                 <h3>API</h3>
                 <p>Доступ к мощным моделям<br />для разработчиков</p>
-                <a href="#" className="btn disabled">Скоро</a>
+                <a href="zima-ai.netlify.app" className="btn disabled">Скоро</a>
               </div>
 
               <div className="product-card">
                 <h3>Будущее</h3>
                 <p>ИИ, который не боится говорить правду</p>
-                <a href="#" className="btn">Скоро</a>
+                <a href="zima-ai.netlify.app" className="btn">Скоро</a>
               </div>
             </div>
           </section>
