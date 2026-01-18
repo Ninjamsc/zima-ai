@@ -1,6 +1,6 @@
 // src/ChatPage.jsx
-import React, { useState, useRef, useEffect } from 'react';
-import './ChatPage.css';
+import React, { useState, useRef, useEffect } from "react";
+import "./ChatPage.css";
 
 const SYSTEM_PROMPT = `
 Ты ZimAI — дерзкая, максимально честная русская ИИ.
@@ -14,12 +14,13 @@ const SYSTEM_PROMPT = `
 export default function ChatPage({ onBack }) {
   const [messages, setMessages] = useState([
     {
-      role: 'assistant',
-      content: 'Здравствуйте, я русская ZimAI.\nЧем могу быть полезна? Что хочешь обсудить?'
-    }
+      role: "assistant",
+      content:
+        "Здравствуйте, я русская ZimAI.\nЧем могу быть полезна? Что хочешь обсудить?",
+    },
   ]);
 
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const messagesEndRef = useRef(null);
@@ -35,23 +36,22 @@ export default function ChatPage({ onBack }) {
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
 
-    const userMessage = { role: 'user', content: input.trim() };
+    const userMessage = { role: "user", content: input.trim() };
 
     // Показываем сообщение пользователя сразу
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
     setIsLoading(true);
 
     try {
-      const response = await fetch('/.netlify/functions/groq-proxy', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/.netlify/functions/grok-proxy", {
+        // ← измени имя если переименовал файл
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: 'llama-3.1-70b-versatile',
+          model: "grok-beta", // или grok-2-latest, grok-3-mini и т.д.
           messages: [
-            { role: 'system', content: SYSTEM_PROMPT },
+            { role: "system", content: SYSTEM_PROMPT },
             ...messages,
             userMessage,
           ],
@@ -67,22 +67,25 @@ export default function ChatPage({ onBack }) {
       }
 
       const data = await response.json();
-      const answer = data.choices?.[0]?.message?.content?.trim() || '';
+      const answer = data.choices?.[0]?.message?.content?.trim() || "";
 
       if (answer) {
-        setMessages(prev => [...prev, { role: 'assistant', content: answer }]);
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: answer },
+        ]);
       } else {
-        throw new Error('Пустой ответ от модели');
+        throw new Error("Пустой ответ от модели");
       }
     } catch (error) {
-      console.error('Ошибка при запросе к Groq через прокси:', error);
-      
-      setMessages(prev => [
+      console.error("Ошибка при запросе к Groq через прокси:", error);
+
+      setMessages((prev) => [
         ...prev,
         {
-          role: 'assistant',
-          content: 'Ой... что-то пошло не так на сервере. Попробуй ещё разок?'
-        }
+          role: "assistant",
+          content: "Ой... что-то пошло не так на сервере. Попробуй ещё разок?",
+        },
       ]);
     } finally {
       setIsLoading(false);
@@ -90,7 +93,7 @@ export default function ChatPage({ onBack }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
     }
@@ -110,7 +113,7 @@ export default function ChatPage({ onBack }) {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={`message ${msg.role === 'user' ? 'user-message' : 'bot-message'}`}
+              className={`message ${msg.role === "user" ? "user-message" : "bot-message"}`}
             >
               {msg.content}
             </div>
