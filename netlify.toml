@@ -1,8 +1,8 @@
 [build]
-  command = "npm run build"          # или "vite build" / "yarn build"
-  publish = "dist"                   # стандарт для Vite, для CRA — "build"
+  command = "npm run build"
+  publish = "build"
   functions = "netlify/functions"
-  
+
 [functions]
   directory = "netlify/functions"    # ← где лежат твои функции
 
