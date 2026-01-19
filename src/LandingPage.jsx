@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import FOG from 'vanta/dist/vanta.fog.min';
-import "./LandingPage.css";
+import './LandingPage.css';
 
 export default function LandingPage({ onTryChat }) {
   const vantaRef = useRef(null);
@@ -12,7 +12,7 @@ export default function LandingPage({ onTryChat }) {
 
     const vantaEffect = FOG({
       el: vantaRef.current,
-      THREE,  // ← просто передаём импортированный THREE
+      THREE: THREE,  // критично: передаём импортированный THREE
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
@@ -27,8 +27,11 @@ export default function LandingPage({ onTryChat }) {
       zoom: 0.95
     });
 
+    console.log('Vanta эффект инициализирован:', vantaEffect);  // ← для отладки
+
     return () => {
       if (vantaEffect) vantaEffect.destroy();
+      console.log('Vanta эффект уничтожен');
     };
   }, []);
 

@@ -90,18 +90,29 @@ s
   pointer-events: none;
 }
 
+.landing-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .vanta-bg {
-  position: fixed;
+  position: absolute !important; /* или fixed */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  pointer-events: none;
 }
 
 .content-wrapper {
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  pointer-events: none; /* чтобы мышь работала с фоном */
+}
+
+.content-wrapper * {
+  pointer-events: auto; /* возвращаем кликабельность элементам */
 }
