@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: "/", // ← обязательно для Netlify
   build: {
-    outDir: "dist", // по умолчанию, но лучше явно
+    outDir: "build", // по умолчанию, но лучше явно
     assetsDir: "assets",
     sourcemap: true, // полезно для отладки
   },
