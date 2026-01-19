@@ -1,18 +1,20 @@
 // src/LandingPage.jsx
 import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import FOG from 'vanta/dist/vanta.fog.min';
-import './LandingPage.css';
+import "./LandingPage.css";
 
 export default function LandingPage({ onTryChat }) {
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    if (!vantaRef.current) return;
+    // Ждём загрузки скриптов с CDN
+    if (!window.THREE || !window.VANTA) {
+      console.warn('Three.js или Vanta не загрузились');
+      return;
+    }
 
-    const vantaEffect = FOG({
+    const vantaEffect = window.VANTA.FOG({
       el: vantaRef.current,
-      THREE: THREE,  // критично: передаём импортированный THREE
+      THREE: window.THREE,  // ← передаём глобальный THREE
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
@@ -27,11 +29,8 @@ export default function LandingPage({ onTryChat }) {
       zoom: 0.95
     });
 
-    console.log('Vanta эффект инициализирован:', vantaEffect);  // ← для отладки
-
     return () => {
       if (vantaEffect) vantaEffect.destroy();
-      console.log('Vanta эффект уничтожен');
     };
   }, []);
 
