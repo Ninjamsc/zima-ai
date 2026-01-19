@@ -26,16 +26,16 @@ body,
   position: relative;
 }
 
-.vanta-bg {
+/* .vanta-bg {
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-}
+} */
 
 /* Контейнеры */
 .container {
-  max-width: 1240px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 0 5vw;
 }
@@ -77,21 +77,20 @@ body,
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Шапка навигации */
+/* Улучшение nav для точного выравнивания логотипа слева */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  width: 100%;
+  gap: 2rem;
 }
 
 .nav-links {
   display: flex;
   gap: 2.5rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -101,6 +100,206 @@ body,
   transition: opacity 0.2s;
 }
 
-.nav-links a:hover {
-  opacity: 1;
+/* Контейнер верхней строки */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* всё на одной горизонтальной линии */
+  width: 100%;
+  padding-top: 2.2rem; /* отступ от верхнего края экрана */
+  margin-bottom: 3rem; /* расстояние до заголовка */
 }
+
+/* Логотип — максимально слева */
+.logo {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  /* margin: 0; */
+  margin-right: 2.5rem;
+  float: left;
+  text-align: left;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0; /* не сжимается */
+  text-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+  white-space: nowrap; /* не переносится */
+}
+
+/* Основная кнопка "Начни вместе с ZimAI →" */
+.primary-btn {
+  padding: 1.1rem 3.2rem; /* +30% шире по горизонтали */
+  font-size: 1.15rem;
+  background: linear-gradient(90deg, #7c3aed, #3b82f6);
+  border: none;
+  color: white;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(124, 58, 237, 0.5);
+}
+
+/* Кнопка "Попробовать сейчас" — в палитре сайта и фона */
+/* Кнопка "Попробовать сейчас" — мягкая, нежная, аккуратная */
+.btn.try-now {
+  padding: 1rem 2.6rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  background: linear-gradient(
+    135deg,
+    #4a2c6e,
+    #6a4c9e
+  ); /* очень мягкий, приглушённый фиолетовый */
+  border: 1px solid rgba(106, 76, 158, 0.25); /* почти незаметная граница */
+  border-radius: 50px;
+  color: #f5f0ff; /* нежный лавандовый текст */
+  box-shadow: 0 4px 16px rgba(106, 76, 158, 0.12); /* лёгкая, воздушная тень */
+  backdrop-filter: blur(8px);
+  transition:
+    all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    /* очень плавная основная анимация */ background 0.55s ease-in-out,
+    /* отдельно плавное изменение цвета */ box-shadow 0.55s ease-in-out;
+}
+
+.btn.try-now:hover {
+  transform: translateY(-3px) scale(1.025); /* лёгкий подъём + минимальное увеличение */
+  background: linear-gradient(
+    135deg,
+    #6a4c9e,
+    #8a6cd8
+  ); /* плавный, спокойный сдвиг к более светлому */
+  border-color: rgba(138, 108, 216, 0.45);
+  box-shadow: 0 12px 32px rgba(106, 76, 158, 0.28);
+  color: #ffffff;
+}
+
+/* Кнопки "Скоро" — светлый, с увеличением при наведении */
+/* Кнопки "Скоро" — максимальная плавность */
+.btn.soon {
+  padding: 0.9rem 2.1rem;
+  font-size: 1.02rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* очень упругая, приятная анимация */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn.soon:hover {
+  transform: scale(1.09) translateY(-2px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(124, 58, 237, 0.45);
+  color: #ffffff;
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.25);
+}
+
+/* Мобильная версия */
+/* На мобильных — логотип остаётся слева, но с центрированием блока */
+@media (max-width: 768px) {
+  .nav {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start; /* логотип строго слева */
+    gap: 1.4rem;
+    padding: 1.2rem 0;
+  }
+
+  .logo {
+    text-align: left;
+    width: 100%;
+  }
+
+  .nav-links {
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .primary-btn {
+    padding: 1rem 2.8rem; /* чуть меньше на мобилке */
+    width: 90%;
+    max-width: 320px;
+  }
+}
+
+/*--------
+
+.nav {
+  display: flex;
+  /* justify-content: space-between; */
+/* justify-content: flex-start;
+  margin-left: 0;
+  align-items: center;
+} */
+
+/* .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  justify-content: flex-start;
+  margin-left: 0;
+  text-align: left;
+} */
+
+/* .nav-links {
+  display: flex;
+  gap: 2.5rem;
+} */
+
+/* .nav-links a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 0.2s; */
+/* } */
+/* Шапка навигации */
+/* .nav {
+  display: flex;
+  justify-content: space-between; /* логотип слева, ссылки справа */
+/* align-items: center; */
+/* width: 100%; занимает всю ширину контейнера */
+/* gap: 2rem; минимальный отступ между элементами */
+/* }  */
+
+/* Логотип */
+/* .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap; /* не переносится */
+/* } */
+
+/* Ссылки */
+/* .nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+} */
+
+/* Мобильная версия */
+/* @media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+} */
+/* .nav-links a:hover {
+  opacity: 1;
+} */
