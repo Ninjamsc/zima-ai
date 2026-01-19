@@ -63,6 +63,7 @@ export default function LandingPage({ onTryChat }) {
         vantaEffect.destroy();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
