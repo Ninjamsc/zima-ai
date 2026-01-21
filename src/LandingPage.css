@@ -48,7 +48,17 @@ html, */
   font-weight: 700;
   line-height: 0.88;
   letter-spacing: -0.03em;
-  margin-bottom: 1.4rem;
+  margin-bottom: 5rem;
+}
+
+.hero-tagline {
+  margin-top: 15px; /* ← именно здесь отступ 15px */
+  /* можно добавить дополнительные стили для красоты */
+  font-size: 1.35rem;
+  opacity: 0.88;
+  line-height: 1.45;
+  color: #d1d5ff; /* лёгкий лавандовый оттенок */
+  /* font-style: italic; если хочешь подчеркнуть слоган */
 }
 
 .hero p {
@@ -85,9 +95,12 @@ html, */
   border-radius: 16px;
   padding: 2.8rem 2.2rem;
   backdrop-filter: blur(10px);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+  justify-content: space-between;
 }
 
 .product-card:hover {

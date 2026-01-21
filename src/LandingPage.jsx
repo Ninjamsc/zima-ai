@@ -88,59 +88,59 @@ export default function LandingPage({ onTryChat }) {
         <main className="container">
           <section className="hero">
             <h1>
-              Understand
+              The ideas
               <br />
-              the Universe
+              flow implementation
             </h1>
-            <p>
-              ZimAI — как суровая русская Зима
+            <p className="hero-tagline">
+              ZimAI – AI without censorship or unnecessary sentimentality
               <br />
-              без цензуры и лишних сантиментов
+              like the Russian winter
             </p>
             <button className="btn primary-btn" onClick={onTryChat}>
-              Начни вместе с ZimAI →
+              Get started with ZimAI →
             </button>
           </section>
 
           <section>
-            <h2>Наша миссия</h2>
+            <h2>[ Our mission ]</h2>
             <div className="products-grid">
               <div className="product-card">
                 <h3>ZimAI</h3>
                 <p>
-                  Максимально честный разговорный ИИ
+                  The most honest conversational
                   <br />
-                  на русском языке
+                  AI in Russian
                 </p>
                 <button className="btn try-now" onClick={onTryChat}>
-                  Попробовать сейчас
+                  Try now
                 </button>
               </div>
 
               <div className="product-card">
                 <h3>API</h3>
                 <p>
-                  Доступ к мощным моделям
+                  Access to powerful models for developers
                   <br />
-                  для разработчиков
+                  for developers
                 </p>
                 <a href="zima-ai.netlify.app" className="btn soon">
-                  Скоро
+                  Coming soon...
                 </a>
               </div>
 
               <div className="product-card">
                 <h3>Future</h3>
-                <p>ИИ, который не боится говорить правду</p>
+                <p>AI for life</p>
                 <a href="zima-ai.netlify.app" className="btn soon">
-                  Скоро
+                  Coming soon...
                 </a>
               </div>
               <div className="product-card">
                 <h3>Developer Docs</h3>
                 <p>Quick start. Learn more...</p>
                 <a href="zima-ai.netlify.app" className="btn soon">
-                  Скоро
+                  Coming soon...
                 </a>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function LandingPage({ onTryChat }) {
         </main>
 
         <footer>
-          <p>© 2026 ZimAI — говорить правду не запрещено</p>
+          <p>© 2026 ZimAI — Powered by Russian winter</p>
         </footer>
       </div>
     </>
