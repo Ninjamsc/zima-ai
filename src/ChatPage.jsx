@@ -44,7 +44,8 @@ export default function ChatPage({ onBack }) {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/.netlify/functions/grok-proxy", {
+      const response = await fetch("/api/grok-proxy", {
+        // "/.netlify/functions/grok-proxy", {
         // ← измени имя если переименовал файл
         method: "POST",
         headers: { "Content-Type": "application/json" },
