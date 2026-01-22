@@ -177,7 +177,7 @@ export default function LandingPage({ onTryChat }) {
               <div className="product-card">
                 <h3>API</h3>
                 <p>
-                  Access to powerful models for developers
+                  Access to powerful models
                   <br />
                   for developers
                 </p>
