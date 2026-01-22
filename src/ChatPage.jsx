@@ -132,7 +132,7 @@ export default function ChatPage({ onBack }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Пиши что угодно.."
+            placeholder="Пиши что угодно..."
             rows={1}
             autoFocus
           />
