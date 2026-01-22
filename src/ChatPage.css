@@ -12,7 +12,8 @@
   width: 100%;
   max-width: 860px;
   height: 84vh;
-  background: rgba(8, 8, 18, 0.82);
+  /* background: rgba(8, 8, 18, 0.82); */
+  background: #000;
   backdrop-filter: blur(18px);
   border-radius: 22px;
   border: 1px solid rgba(100, 100, 180, 0.14);

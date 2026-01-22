@@ -5,7 +5,6 @@ import "./LandingPage.css";
 export default function LandingPage({ onTryChat }) {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Функция инициализации Vanta
@@ -67,23 +66,6 @@ export default function LandingPage({ onTryChat }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Закрываем меню при клике на ссылку
-  const handleLinkClick = () => {
-    setMobileMenuOpen(false);
-  };
-
-  // Блокируем скролл body когда меню открыто
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenuOpen]);
-
   return (
     <>
       <div ref={vantaRef} className="vanta-bg" />
@@ -91,56 +73,17 @@ export default function LandingPage({ onTryChat }) {
       <div className="content-wrapper">
         <header className="container">
           <div className="top-bar">
-            {/* Hamburger Menu Button (Mobile Only) */}
-            <button 
-              className="hamburger-menu"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
-              <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
-              <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
-            </button>
-
-            {/* Logo */}
             <div className="logo">ZimAI</div>
-
-            {/* Desktop Navigation */}
-            <nav className="nav desktop-nav">
+            <nav className="nav">
+              {/* <div className="logo">ZimAI</div> */}
               <div className="nav-links">
-                <a href="#products">Products</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="zima-ai.netlify.app">Products</a>
+                <a href="zima-ai.netlify.app">About</a>
+                <a href="zima-ai.netlify.app">Contact</a>
               </div>
             </nav>
           </div>
         </header>
-
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`}
-          onClick={() => setMobileMenuOpen(false)}
-        />
-
-        {/* Mobile Menu */}
-        <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
-          <div className="mobile-nav-header">
-            <div className="logo">ZimAI</div>
-            <button 
-              className="close-menu"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              ✕
-            </button>
-          </div>
-          <div className="mobile-nav-links">
-            <a href="#products" onClick={handleLinkClick}>Products</a>
-            <a href="#about" onClick={handleLinkClick}>About</a>
-            <a href="#contact" onClick={handleLinkClick}>Contact</a>
-          </div>
-        </nav>
 
         <main className="container">
           <section className="hero">
@@ -159,7 +102,7 @@ export default function LandingPage({ onTryChat }) {
             </button>
           </section>
 
-          <section id="products">
+          <section>
             <h2>[ Our mission ]</h2>
             <div className="products-grid">
               <div className="product-card">
@@ -181,7 +124,7 @@ export default function LandingPage({ onTryChat }) {
                   <br />
                   for developers
                 </p>
-                <a href="#api" className="btn soon">
+                <a href="zima-ai.netlify.app" className="btn soon">
                   Coming soon...
                 </a>
               </div>
@@ -189,14 +132,14 @@ export default function LandingPage({ onTryChat }) {
               <div className="product-card">
                 <h3>Future</h3>
                 <p>AI for life</p>
-                <a href="#future" className="btn soon">
+                <a href="zima-ai.netlify.app" className="btn soon">
                   Coming soon...
                 </a>
               </div>
               <div className="product-card">
                 <h3>Developer Docs</h3>
                 <p>Quick start. Learn more...</p>
-                <a href="#docs" className="btn soon">
+                <a href="zima-ai.netlify.app" className="btn soon">
                   Coming soon...
                 </a>
               </div>
@@ -204,7 +147,7 @@ export default function LandingPage({ onTryChat }) {
           </section>
         </main>
 
-        <footer id="contact">
+        <footer>
           <p>© 2026 ZimAI — Powered by Russian winter</p>
         </footer>
       </div>

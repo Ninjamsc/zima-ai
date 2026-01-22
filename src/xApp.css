@@ -1,0 +1,622 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: #000;
+  color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* .vanta-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+} */
+
+/* Контейнеры */
+.container {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* Кнопки общие */
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #7c3aed, #3b82f6);
+  border: none;
+  color: white;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.28);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(124, 58, 237, 0.38);
+}
+
+/* Шапка */
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.4rem 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Шапка навигации */
+/* Улучшение nav для точного выравнивания логотипа слева */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 0.2s;
+}
+
+/* Контейнер верхней строки */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* всё на одной горизонтальной линии */
+  width: 100%;
+  padding-top: 2.2rem; /* отступ от верхнего края экрана */
+  margin-bottom: 3rem; /* расстояние до заголовка */
+}
+
+/* Логотип — максимально слева */
+.logo {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  /* margin: 0; */
+  margin-right: 2.5rem;
+  float: left;
+  text-align: left;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0; /* не сжимается */
+  text-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+  white-space: nowrap; /* не переносится */
+}
+
+/* Основная кнопка "Начни вместе с ZimAI →" */
+.primary-btn {
+  padding: 1.1rem 4.2rem; /* +30% шире по горизонтали */
+  font-size: 1.15rem;
+  background: linear-gradient(90deg, #7c3aed, #3b82f6);
+  border: none;
+  color: white;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(124, 58, 237, 0.5);
+}
+
+/* Кнопка "Попробовать сейчас" — в палитре сайта и фона */
+/* Кнопка "Попробовать сейчас" — мягкая, нежная, аккуратная */
+.btn.try-now {
+  padding: 1rem 2.6rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  background: linear-gradient(
+    135deg,
+    #604c79,
+    #7f69a5
+  ); /* очень мягкий, приглушённый фиолетовый */
+  border: 1px solid rgba(106, 76, 158, 0.25); /* почти незаметная граница */
+  border-radius: 50px;
+  color: #f5f0ff; /* нежный лавандовый текст */
+  box-shadow: 0 4px 16px rgba(106, 76, 158, 0.12); /* лёгкая, воздушная тень */
+  backdrop-filter: blur(8px);
+  transition:
+    all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    /* очень плавная основная анимация */ background 0.55s ease-in-out,
+    /* отдельно плавное изменение цвета */ box-shadow 0.55s ease-in-out;
+  /* width: auto; ширина = длине текста + padding */
+  /* min-width: 50px; минимальная ширина для единообразия */
+  padding: 0.9rem 1.8rem;
+  margin: 0; /* убираем лишние отступы */
+  /* text-align: center; */
+  /* margin-top: auto; */
+  text-align: left; /* ← выравнивание по левому краю */
+  width: 100%;
+  max-width: 180px; /* фиксированная ширина для единообразия */
+}
+
+.btn.try-now:hover {
+  transform: translateY(-3px) scale(1.025); /* лёгкий подъём + минимальное увеличение */
+  background: linear-gradient(
+    135deg,
+    #6a4c9e,
+    #8a6cd8
+  ); /* плавный, спокойный сдвиг к более светлому */
+  border-color: rgba(138, 108, 216, 0.45);
+  box-shadow: 0 12px 32px rgba(106, 76, 158, 0.28);
+  color: #ffffff;
+}
+
+/* Кнопки "Скоро" — светлый, с увеличением при наведении */
+/* Кнопки "Скоро" — максимальная плавность */
+.btn.soon {
+  padding: 0.9rem 2.1rem;
+  font-size: 1.02rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* очень упругая, приятная анимация */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* Контейнер кнопки — всегда внизу, слева */
+  margin-top: auto;
+  /* text-align: left; ← выравнивание по левому краю */
+  /* width: auto; ширина = длине текста + padding */
+  min-width: 10px; /* минимальная ширина для единообразия */
+  padding: 0.9rem 1.8rem;
+  margin: 0; /* убираем лишние отступы */
+  /* text-align: center; */
+  margin-top: auto;
+  text-align: left; /* ← выравнивание по левому краю */
+  width: 100%;
+  max-width: 180px; /* фиксированная ширина для единообразия */
+}
+
+.btn.soon:hover {
+  transform: scale(1.09) translateY(-2px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(124, 58, 237, 0.45);
+  color: #ffffff;
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.25);
+}
+
+/* Мобильная версия */
+/* На мобильных — логотип остаётся слева, но с центрированием блока */
+
+/* ========================================
+   MOBILE RESPONSIVE - ЕДИНАЯ СИСТЕМА ОТСТУПОВ
+   ======================================== */
+
+/* 
+  ДИЗАЙН-СИСТЕМА ОТСТУПОВ:
+  - Внешние отступы (padding контейнеров): 20px (1.25rem)
+  - Внутренние отступы (элементы): 16px (1rem)
+  - Малые отступы (gap, margins): 12px (0.75rem)
+  - Кнопки padding: 14px 24px
+*/
+
+/* ==========================================
+   1. БАЗОВЫЕ ПЕРЕМЕННЫЕ ДЛЯ КОНСИСТЕНТНОСТИ
+   ========================================== */
+
+:root {
+  /* Desktop отступы */
+  --container-padding-desktop: 5vw;
+  --element-gap-desktop: 2.5rem;
+
+  /* Mobile отступы - ЕДИНАЯ СИСТЕМА */
+  --mobile-outer-padding: 1.25rem; /* 20px - внешний отступ от края экрана */
+  --mobile-inner-padding: 1rem; /* 16px - внутренний отступ элементов */
+  --mobile-small-gap: 0.75rem; /* 12px - малые отступы между элементами */
+  --mobile-medium-gap: 1rem; /* 16px - средние отступы */
+  --mobile-large-gap: 1.5rem; /* 24px - большие отступы между секциями */
+}
+
+@media (max-width: 768px) {
+  /* ==========================================
+     7.1 КОНТЕЙНЕРЫ И БАЗОВЫЕ ОТСТУПЫ
+     ========================================== */
+
+  .container {
+    padding: 0 var(--mobile-outer-padding); /* 20px со всех сторон */
+  }
+
+  /* ==========================================
+     7.2 НАВИГАЦИЯ (LANDING PAGE)
+     ========================================== */
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--mobile-medium-gap); /* 16px между элементами */
+    padding: var(--mobile-inner-padding) 0; /* 16px сверху/снизу */
+  }
+
+  .logo {
+    font-size: 2rem; /* Чуть меньше для мобилок */
+    margin-right: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--mobile-small-gap); /* 12px между ссылками */
+    width: 100%;
+  }
+
+  .nav-links a {
+    padding: var(--mobile-small-gap) 0; /* 12px touch target */
+    font-size: 1rem;
+  }
+
+  .top-bar {
+    padding-top: var(--mobile-outer-padding); /* 20px от верха */
+    margin-bottom: var(--mobile-large-gap); /* 24px до контента */
+  }
+
+  /* ==========================================
+     7.3 HERO СЕКЦИЯ
+     ========================================== */
+
+  .hero {
+    padding: var(--mobile-large-gap) var(--mobile-outer-padding); /* 24px, 20px */
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    margin-bottom: var(--mobile-medium-gap); /* 16px */
+    line-height: 1;
+  }
+
+  .hero p {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    margin: 0 auto var(--mobile-large-gap); /* 24px снизу */
+    padding: 0 var(--mobile-small-gap); /* 12px по бокам */
+  }
+
+  /* ==========================================
+     7.4 КНОПКИ НА МОБИЛЬНЫХ
+     ========================================== */
+
+  .primary-btn {
+    width: 100%;
+    max-width: 100%; /* Full width на мобилках */
+    padding: 0.875rem 1.5rem; /* 14px 24px - единообразно */
+    font-size: 1.05rem;
+    margin: 0 auto;
+  }
+
+  .btn.try-now,
+  .btn.soon {
+    width: 100%;
+    max-width: 100%; /* Full width для consistency */
+    padding: 0.875rem 1.5rem; /* 14px 24px */
+    font-size: 1rem;
+    text-align: center; /* Центрируем текст на мобилках */
+    margin: 0; /* Убираем auto margins */
+  }
+
+  /* ==========================================
+     7.5 PRODUCTS GRID
+     ========================================== */
+
+  .products-grid {
+    grid-template-columns: 1fr; /* Одна колонка */
+    gap: var(--mobile-large-gap); /* 24px между карточками */
+    margin-top: var(--mobile-large-gap); /* 24px сверху */
+    padding: 0; /* Убираем лишние отступы */
+  }
+
+  .product-card {
+    padding: var(--mobile-outer-padding); /* 20px внутри карточки */
+    border-radius: 12px; /* Чуть меньший radius */
+  }
+
+  .product-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--mobile-medium-gap); /* 16px */
+  }
+
+  .product-card p {
+    font-size: 1rem;
+    margin-bottom: var(--mobile-medium-gap); /* 16px */
+    line-height: 1.5;
+  }
+
+  /* ==========================================
+     7.6 FOOTER
+     ========================================== */
+
+  footer {
+    padding: var(--mobile-large-gap) var(--mobile-outer-padding); /* 24px, 20px */
+    font-size: 0.875rem;
+  }
+
+  /* ==========================================
+     7.7 CHAT PAGE НА МОБИЛЬНЫХ
+     ========================================== */
+
+  .chat-mode {
+    padding: 0; /* Убираем padding для fullscreen */
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height для iOS */
+  }
+
+  .chat-container {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height */
+    max-width: 100%;
+    border-radius: 0; /* Убираем скругления на fullscreen */
+    border: none;
+  }
+
+  .chat-header {
+    padding: var(--mobile-medium-gap) var(--mobile-outer-padding); /* 16px, 20px */
+    gap: var(--mobile-medium-gap); /* 16px */
+    /* Добавляем safe-area для iPhone с notch */
+    padding-top: calc(var(--mobile-medium-gap) + env(safe-area-inset-top));
+  }
+
+  .chat-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .back-btn {
+    font-size: 1.5rem;
+    padding: 0.5rem; /* Увеличиваем touch target */
+    margin-left: calc(
+      var(--mobile-small-gap) * -1
+    ); /* -12px для выравнивания */
+  }
+
+  .messages {
+    padding: var(--mobile-medium-gap) var(--mobile-outer-padding); /* 16px, 20px */
+    gap: var(--mobile-small-gap); /* 12px между сообщениями */
+  }
+
+  .message {
+    max-width: 85%; /* Чуть больше на мобилках */
+    padding: var(--mobile-small-gap) var(--mobile-medium-gap); /* 12px, 16px */
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+
+  .user-message {
+    border-bottom-right-radius: 4px;
+  }
+
+  .bot-message {
+    border-bottom-left-radius: 4px;
+  }
+
+  .input-area {
+    padding: var(--mobile-medium-gap) var(--mobile-outer-padding); /* 16px, 20px */
+    gap: var(--mobile-small-gap); /* 12px между textarea и button */
+    /* Добавляем safe-area для iPhone с home indicator */
+    padding-bottom: calc(
+      var(--mobile-medium-gap) + env(safe-area-inset-bottom)
+    );
+  }
+
+  textarea {
+    padding: var(--mobile-small-gap) var(--mobile-medium-gap); /* 12px, 16px */
+    font-size: 1rem;
+    border-radius: 12px;
+    min-height: 44px; /* iOS recommended touch target */
+  }
+
+  .send-btn {
+    width: 48px; /* Чуть меньше для мобилок */
+    height: 48px;
+    font-size: 1.5rem;
+    flex-shrink: 0; /* Не сжимается */
+  }
+}
+
+/* ==========================================
+   8. ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (< 375px)
+   ========================================== */
+
+@media (max-width: 374px) {
+  :root {
+    --mobile-outer-padding: 1rem; /* 16px для очень малых экранов */
+  }
+
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .product-card {
+    padding: var(--mobile-medium-gap); /* 16px */
+  }
+
+  .product-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .message {
+    max-width: 90%; /* Еще больше на tiny screens */
+  }
+}
+
+/* ==========================================
+   9. LANDSCAPE ORIENTATION НА МОБИЛЬНЫХ
+   ========================================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .chat-mode {
+    height: 100vh;
+  }
+
+  .chat-container {
+    height: 100vh;
+  }
+
+  .hero {
+    padding: var(--mobile-medium-gap) var(--mobile-outer-padding);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: var(--mobile-small-gap);
+  }
+
+  .messages {
+    padding: var(--mobile-small-gap) var(--mobile-outer-padding);
+  }
+}
+
+/* ==========================================
+   10. ACCESSIBILITY IMPROVEMENTS
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Увеличенные touch targets для мобильных */
+@media (max-width: 768px) {
+  .btn,
+  .back-btn,
+  .nav-links a {
+    min-height: 44px; /* iOS recommended */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   11. DARK MODE SUPPORT (если нужно)
+   ========================================== */
+
+@media (prefers-color-scheme: light) {
+  /* Пока не реализовано, но структура готова */
+}
+/*--------
+
+.nav {
+  display: flex;
+  /* justify-content: space-between; */
+/* justify-content: flex-start;
+  margin-left: 0;
+  align-items: center;
+} */
+
+/* .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  justify-content: flex-start;
+  margin-left: 0;
+  text-align: left;
+} */
+
+/* .nav-links {
+  display: flex;
+  gap: 2.5rem;
+} */
+
+/* .nav-links a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 0.2s; */
+/* } */
+/* Шапка навигации */
+/* .nav {
+  display: flex;
+  justify-content: space-between; /* логотип слева, ссылки справа */
+/* align-items: center; */
+/* width: 100%; занимает всю ширину контейнера */
+/* gap: 2rem; минимальный отступ между элементами */
+/* }  */
+
+/* Логотип */
+/* .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap; /* не переносится */
+/* } */
+
+/* Ссылки */
+/* .nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+} */
+
+/* Мобильная версия */
+/* @media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+} */
+/* .nav-links a:hover {
+  opacity: 1;
+} */

@@ -1,0 +1,187 @@
+/* LandingPage.css */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html, */
+.vanta-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 5vw;
+} */
+
+/* .content-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  color: white;
+} */
+
+.hero {
+  padding: 18vh 0 12vh;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(3.8rem, 10vw, 9.2rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin-bottom: 5rem;
+}
+
+.hero-tagline {
+  margin-top: 15px; /* ← именно здесь отступ 15px */
+  /* можно добавить дополнительные стили для красоты */
+  font-size: 1.35rem;
+  opacity: 0.88;
+  line-height: 1.45;
+  color: #d1d5ff; /* лёгкий лавандовый оттенок */
+  /* font-style: italic; если хочешь подчеркнуть слоган */
+}
+
+.hero p {
+  font-size: clamp(1.35rem, 3.8vw, 1.95rem);
+  max-width: 760px;
+  margin: 0 auto 3.2rem;
+  font-weight: 300;
+  opacity: 0.88;
+  line-height: 1.38;
+}
+
+.mission {
+  padding: 14vh 0;
+  text-align: center;
+}
+
+.mission h2 {
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  letter-spacing: -0.02em;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 3.5rem;
+  margin-top: 6rem;
+}
+
+.product-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 2.8rem 2.2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.product-card h3 {
+  font-size: 2.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.product-card p {
+  font-size: 1.15rem;
+  opacity: 0.78;
+  line-height: 1.48;
+  margin-bottom: 2rem;
+}
+
+footer {
+  padding: 10vh 0;
+  text-align: center;
+  opacity: 0.55;
+  font-size: 0.98rem;
+}
+
+/* Для отключенных кнопок */
+.btn.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.landing-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  /* pointer-events: none; чтобы мышь работала с фоном */
+}
+/* */
+
+.content-wrapper * {
+  pointer-events: auto; /* возвращаем кликабельность элементам */
+}
+
+/* .vanta-bg canvas {
+  display: block !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.vanta-bg {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1 !important;
+  background: linear-gradient(180deg, #000000 0%, #220033 100%);
+} */
+
+footer {
+  padding: 10vh 0;
+  text-align: center;
+  opacity: 0.55;
+  font-size: 0.98rem;
+}
+
+/* Для отключенных кнопок */
+.btn.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}

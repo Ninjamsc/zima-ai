@@ -1,45 +1,44 @@
 /* LandingPage.css */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body,
-html, */
+/* ==========================================
+   VANTA BACKGROUND
+   ========================================== */
+
 .vanta-bg {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
 }
+
+.vanta-bg canvas {
+  display: block !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ==========================================
+   CONTENT WRAPPER
+   ========================================== */
 
 .content-wrapper {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* .container {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 5vw;
-} */
-
-/* .content-wrapper {
   position: relative;
   z-index: 1;
   min-height: 100vh;
   color: white;
-} */
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
 
 .hero {
-  padding: 18vh 0 12vh;
+  padding: 22vh 0 16vh;
   text-align: center;
 }
 
@@ -48,17 +47,7 @@ html, */
   font-weight: 700;
   line-height: 0.88;
   letter-spacing: -0.03em;
-  margin-bottom: 5rem;
-}
-
-.hero-tagline {
-  margin-top: 15px; /* ← именно здесь отступ 15px */
-  /* можно добавить дополнительные стили для красоты */
-  font-size: 1.35rem;
-  opacity: 0.88;
-  line-height: 1.45;
-  color: #d1d5ff; /* лёгкий лавандовый оттенок */
-  /* font-style: italic; если хочешь подчеркнуть слоган */
+  margin-bottom: 1.4rem;
 }
 
 .hero p {
@@ -70,17 +59,9 @@ html, */
   line-height: 1.38;
 }
 
-.mission {
-  padding: 14vh 0;
-  text-align: center;
-}
-
-.mission h2 {
-  font-size: clamp(2.8rem, 7vw, 5.4rem);
-  font-weight: 700;
-  margin-bottom: 1.8rem;
-  letter-spacing: -0.02em;
-}
+/* ==========================================
+   PRODUCTS GRID
+   ========================================== */
 
 .products-grid {
   display: grid;
@@ -95,12 +76,11 @@ html, */
   border-radius: 16px;
   padding: 2.8rem 2.2rem;
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 340px;
-  justify-content: space-between;
 }
 
 .product-card:hover {
@@ -118,7 +98,12 @@ html, */
   opacity: 0.78;
   line-height: 1.48;
   margin-bottom: 2rem;
+  flex-grow: 1;
 }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
 
 footer {
   padding: 10vh 0;
@@ -127,61 +112,356 @@ footer {
   font-size: 0.98rem;
 }
 
-/* Для отключенных кнопок */
-.btn.disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+/* ==========================================
+   HAMBURGER MENU (Mobile Only)
+   ========================================== */
+
+.hamburger-menu {
+  display: none; /* Скрыто на desktop */
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1002;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-menu:hover {
+  transform: scale(1.1);
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Анимация превращения в X */
+.hamburger-line.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================
+   MOBILE MENU OVERLAY
+   ========================================== */
+
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
-.landing-wrapper {
-  position: relative;
-  width: 100%;
+.mobile-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================
+   MOBILE NAVIGATION (Slide-in Menu)
+   ========================================== */
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: -100%; /* Скрыто слева */
+  width: 280px;
   height: 100vh;
-  overflow: hidden;
+  height: 100dvh; /* iOS support */
+  background: rgba(10, 10, 20, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.content-wrapper {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  /* pointer-events: none; чтобы мышь работала с фоном */
-}
-/* */
-
-.content-wrapper * {
-  pointer-events: auto; /* возвращаем кликабельность элементам */
+.mobile-nav.open {
+  left: 0; /* Выезжает */
 }
 
-/* .vanta-bg canvas {
-  display: block !important;
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
+/* Mobile Nav Header */
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.vanta-bg {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: -1 !important;
-  background: linear-gradient(180deg, #000000 0%, #220033 100%);
-} */
-
-footer {
-  padding: 10vh 0;
-  text-align: center;
-  opacity: 0.55;
-  font-size: 0.98rem;
+.mobile-nav-header .logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+  margin: 0;
+  float: none;
 }
 
-/* Для отключенных кнопок */
-.btn.disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  pointer-events: none;
+.close-menu {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-menu:hover {
+  transform: rotate(90deg);
+  color: #7c3aed;
+}
+
+/* Mobile Nav Links */
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  gap: 0;
+}
+
+.mobile-nav-links a {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.mobile-nav-links a:hover,
+.mobile-nav-links a:active {
+  background: rgba(124, 58, 237, 0.1);
+  border-left-color: #7c3aed;
+  padding-left: 2rem;
+}
+
+/* ==========================================
+   DESKTOP NAVIGATION
+   ========================================== */
+
+.desktop-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Показываем hamburger menu на мобильных */
+  .hamburger-menu {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Показываем mobile menu и overlay */
+  .mobile-menu-overlay {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  /* Скрываем desktop nav */
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Перестраиваем top-bar */
+  .top-bar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding-top: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+    position: relative !important;
+  }
+
+  .logo {
+    font-size: 1.75rem;
+    margin-right: 0;
+    order: 2; /* Logo справа */
+    float: none;
+  }
+
+  .hamburger-menu {
+    order: 1; /* Hamburger слева */
+  }
+
+  /* Hero адаптация */
+  .hero {
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    line-height: 1;
+  }
+
+  .hero p {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    margin: 0 auto 1.5rem;
+    padding: 0 0.75rem;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 0;
+    /* max-width: 150px; */
+  }
+
+  .product-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .product-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    max-width: 20px;
+  }
+
+  .product-card p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1.5rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* ==========================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (< 375px)
+   ========================================== */
+
+@media (max-width: 374px) {
+  .mobile-nav {
+    width: 260px; /* Чуть уже на маленьких экранах */
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .product-card {
+    padding: 1rem;
+  }
+
+  .product-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .mobile-nav-links a {
+    font-size: 1.1rem;
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* ==========================================
+   LANDSCAPE MODE НА МОБИЛЬНЫХ
+   ========================================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .mobile-nav {
+    width: 240px; /* Уже в landscape */
+  }
+
+  .hero {
+    padding: 1rem 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero p {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states для keyboard navigation */
+.hamburger-menu:focus,
+.close-menu:focus,
+.mobile-nav-links a:focus {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Touch targets минимум 44px (Apple HIG) */
+@media (max-width: 768px) {
+  .hamburger-menu,
+  .close-menu,
+  .mobile-nav-links a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
