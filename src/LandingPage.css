@@ -1,4 +1,4 @@
-/* LandingPage.css */
+/* LandingPage.css - ИСПРАВЛЕННАЯ ВЕРСИЯ */
 
 /* ==========================================
    VANTA BACKGROUND
@@ -10,7 +10,7 @@
   left: 0;
   width: 100% !important;
   height: 100% !important;
-  z-index: 1 !important;
+  z-index: 0 !important; /* Позади всего */
 }
 
 .vanta-bg canvas {
@@ -28,7 +28,7 @@
 
 .content-wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 10; /* Поверх фона */
   min-height: 100vh;
   color: white;
 }
@@ -127,25 +127,31 @@ footer {
   padding: 10px;
   z-index: 1002;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .hamburger-menu:hover {
   transform: scale(1.1);
 }
 
+.hamburger-menu:active {
+  transform: scale(0.95);
+}
+
 .hamburger-line {
   display: block;
   width: 24px;
-  height: 2px;
+  height: 2.5px;
   background: #fff;
-  margin: 5px 0;
+  margin: 4px 0;
   transition: all 0.3s ease;
   border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* Анимация превращения в X */
 .hamburger-line.open:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(10.5px) rotate(45deg);
 }
 
 .hamburger-line.open:nth-child(2) {
@@ -153,7 +159,7 @@ footer {
 }
 
 .hamburger-line.open:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-10.5px) rotate(-45deg);
 }
 
 /* ==========================================
@@ -167,9 +173,9 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 998;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -188,21 +194,21 @@ footer {
   display: none;
   position: fixed;
   top: 0;
-  left: -100%; /* Скрыто слева */
+  left: -100%;
   width: 280px;
   height: 100vh;
-  height: 100dvh; /* iOS support */
-  background: rgba(10, 10, 20, 0.95);
+  height: 100dvh;
+  background: rgba(10, 10, 20, 0.98);
   backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1000;
-  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 999;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.7);
 }
 
 .mobile-nav.open {
-  left: 0; /* Выезжает */
+  left: 0;
 }
 
 /* Mobile Nav Header */
@@ -211,7 +217,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .mobile-nav-header .logo {
@@ -246,6 +252,10 @@ footer {
   color: #7c3aed;
 }
 
+.close-menu:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
 /* Mobile Nav Links */
 .mobile-nav-links {
   display: flex;
@@ -261,13 +271,13 @@ footer {
   text-decoration: none;
   font-size: 1.25rem;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   border-left: 3px solid transparent;
 }
 
 .mobile-nav-links a:hover,
 .mobile-nav-links a:active {
-  background: rgba(124, 58, 237, 0.1);
+  background: rgba(124, 58, 237, 0.15);
   border-left-color: #7c3aed;
   padding-left: 2rem;
 }
@@ -282,102 +292,220 @@ footer {
   align-items: center;
 }
 
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 0.2s;
+  font-size: 1.05rem;
+  font-weight: 500;
+  opacity: 0.92;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: #c4b5fd; /* ZimAI-фиолетовый акцент */
+}
+
 /* ==========================================
-   MOBILE RESPONSIVE
+   MOBILE RESPONSIVE (≤ 768px)
    ========================================== */
 
-@media (max-width: 568px) {
-  /* Показываем hamburger menu на мобильных */
+@media (max-width: 768px) {
+  /* КРИТИЧНО: Полностью скрываем desktop навигацию */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .desktop-nav .nav-links {
+    display: none !important;
+  }
+
+  /* Показываем hamburger menu */
   .hamburger-menu {
-    display: flex !important;
+    display: none !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  /* Показываем mobile menu и overlay */
+  /* Показываем mobile menu компоненты */
   .mobile-menu-overlay {
     display: block;
   }
 
   .mobile-nav {
     display: block;
+    left: -100%;
+    width: 82vw; /* чуть уже, современнее */
+    max-width: 320px;
+    background: linear-gradient(135deg, #0a0015, #140033);
+    backdrop-filter: blur(24px);
+    border-right: 1px solid rgba(124, 58, 237, 0.28);
+    box-shadow: 6px 0 40px rgba(0, 0, 0, 0.75);
   }
 
-  /* Скрываем desktop nav */
-  .desktop-nav {
-    display: none;
+  .mobile-nav.open {
+    left: 0;
   }
 
-  /* Перестраиваем top-bar */
+  .mobile-nav-header {
+    padding: 1.4rem 1.6rem;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.22);
+  }
+
+  .mobile-nav-header .logo {
+    font-size: 2.1rem;
+    background: linear-gradient(90deg, #9f7aea, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+  }
+
+  .close-menu {
+    font-size: 2.4rem;
+    color: #a78bfa;
+    transition: all 0.3s ease;
+  }
+
+  .close-menu:hover {
+    color: #c4b5fd;
+    transform: rotate(90deg) scale(1.15);
+  }
+
+  .mobile-nav-links {
+    display: flex !important;
+    flex-direction: column;
+    padding: 2.5rem 1rem 3rem;
+    gap: 0.6rem;
+  }
+
+  .mobile-nav-links a {
+    display: block !important; /* ← критично, если раньше был none или flex */
+    padding: 1.2rem 1.8rem;
+    font-size: 1.32rem;
+    font-weight: 500;
+    color: #e0d7ff;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-nav-links a:hover,
+  .mobile-nav-links a:active {
+    color: #c4b5fd;
+    background: rgba(124, 58, 237, 0.14);
+    padding-left: 2.4rem;
+  }
+
+  .mobile-nav-links a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, #7c3aed, #a78bfa);
+    transform: scaleY(0);
+    transition: transform 0.28s ease;
+  }
+
+  .mobile-nav-links a:hover::before {
+    transform: scaleY(1);
+  }
+
+  /* Top bar перестройка */
   .top-bar {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding-top: 1.25rem !important;
-    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+    /* padding: 1.2rem 1.5rem !important; ← добавь отступы по бокам */
     position: relative !important;
-  }
-
-  .logo {
-    font-size: 1.75rem;
-    margin-right: 0;
-    order: 2; /* Logo справа */
-    float: none;
+    z-index: 1001 !important; /* ← поверх всего */
   }
 
   .hamburger-menu {
-    order: 1; /* Hamburger слева */
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48px !important;
+    height: 48px !important;
+    margin-left: 0 !important; /* слева без лишнего отступа */
+    order: 1 !important;
+    z-index: 1002 !important;
+    /* для отладки — раскомментировать */
+    /* background: rgba(255,0,0,0.4) !important; */
+  }
+
+  .logo {
+    order: 2 !important;
+    /* margin: 0 auto !important; центр, если хочешь */
+    font-size: 1.9rem !important;
+    text-align: center !important;
+    flex: 1 !important;
+  }
+
+  /* убираем десктоп нав полностью */
+  .desktop-nav,
+  .desktop-nav .nav-links {
+    display: none !important;
   }
 
   /* Hero адаптация */
   .hero {
-    padding: 1.5rem 0;
+    /* padding: 2rem 0; */
     text-align: center;
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 12vw, 4rem);
-    margin-bottom: 5rem;
-    margin-top: 5rem;
-    line-height: 1;
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    line-height: 1.1;
   }
 
   .hero p {
-    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
-    margin: 0 auto 1.5rem;
-    padding: 0 0.75rem;
+    font-size: clamp(1.05rem, 4vw, 1.3rem);
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+    max-width: 90%;
   }
 
   /* Products Grid */
   .products-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     padding: 0;
-    /* max-width: 150px; */
   }
 
   .product-card {
-    padding: 1.25rem;
+    padding: 1.5rem;
     border-radius: 12px;
   }
 
   .product-card h3 {
     font-size: 1.75rem;
     margin-bottom: 1rem;
-    max-width: 20px;
   }
 
   .product-card p {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     line-height: 1.5;
   }
 
   /* Footer */
   footer {
-    padding: 1.5rem 1.25rem;
+    padding: 2rem 1.25rem;
     font-size: 0.875rem;
   }
 }
@@ -388,19 +516,19 @@ footer {
 
 @media (max-width: 374px) {
   .mobile-nav {
-    width: 260px; /* Чуть уже на маленьких экранах */
+    width: 260px;
   }
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.35rem !important;
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(2rem, 10vw, 2.8rem);
   }
 
   .product-card {
-    padding: 1rem;
+    padding: 1.25rem;
   }
 
   .product-card h3 {
@@ -419,20 +547,37 @@ footer {
 
 @media (max-width: 768px) and (orientation: landscape) {
   .mobile-nav {
-    width: 240px; /* Уже в landscape */
+    width: 240px;
   }
 
   .hero {
-    padding: 1rem 0;
+    padding: 1.5rem 0;
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 8vw, 3rem);
-    margin-bottom: 0.75rem;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
   .hero p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================
+   СРЕДНИЕ ЭКРАНЫ (Tablets 769px-1024px)
+   ========================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero h1 {
+    font-size: clamp(4rem, 9vw, 6rem);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
@@ -451,7 +596,8 @@ footer {
 /* Focus states для keyboard navigation */
 .hamburger-menu:focus,
 .close-menu:focus,
-.mobile-nav-links a:focus {
+.mobile-nav-links a:focus,
+.desktop-nav .nav-links a:focus {
   outline: 2px solid #7c3aed;
   outline-offset: 2px;
 }
@@ -465,3 +611,27 @@ footer {
     min-width: 44px;
   }
 }
+
+/* ==========================================
+   DEBUG HELPERS (удалить в production)
+   ========================================== */
+
+/* Раскомментируй для отладки:
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    background: rgba(255, 0, 0, 0.3) !important;
+    border: 2px solid red !important;
+  }
+  
+  .logo {
+    background: rgba(0, 255, 0, 0.3) !important;
+    border: 2px solid green !important;
+  }
+  
+  .desktop-nav {
+    background: rgba(0, 0, 255, 0.3) !important;
+    border: 2px solid blue !important;
+  }
+}
+*/

@@ -33,7 +33,7 @@ export default function LandingPage({ onTryChat }) {
           lowlightColor: 0x220033,
           baseColor: 0x000000,
           blurFactor: 0.48,
-          speed: 0.2,
+          speed: 0.4,
           zoom: 0.95,
         });
         setVantaEffect(effect);
@@ -75,12 +75,12 @@ export default function LandingPage({ onTryChat }) {
   // Блокируем скролл body когда меню открыто
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [mobileMenuOpen]);
 
@@ -89,45 +89,63 @@ export default function LandingPage({ onTryChat }) {
       <div ref={vantaRef} className="vanta-bg" />
 
       <div className="content-wrapper">
-        <header className="container">
-          <div className="top-bar">
-            {/* Hamburger Menu Button (Mobile Only) */}
-            <button 
-              className="hamburger-menu"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
-              <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
-              <span className={`hamburger-line ${mobileMenuOpen ? 'open' : ''}`}></span>
-            </button>
+        <header className="header-fixed">
+          {" "}
+          {/* ← добавь класс header-fixed, если он есть в App.css */}
+          <div className="container">
+            <div className="top-bar">
+              {/* Мобильный гамбургер — виден только на мобильных */}
+              <button
+                className="hamburger-menu"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                <span
+                  className={`hamburger-line ${mobileMenuOpen ? "open" : ""}`}
+                ></span>
+                <span
+                  className={`hamburger-line ${mobileMenuOpen ? "open" : ""}`}
+                ></span>
+                <span
+                  className={`hamburger-line ${mobileMenuOpen ? "open" : ""}`}
+                ></span>
+              </button>
 
-            {/* Logo */}
-            <div className="logo">ZimAI</div>
+              {/* Логотип — всегда виден */}
+              <a href="#products" className="logo" onClick={handleLinkClick}>
+                ZimAI
+              </a>
 
-            {/* Desktop Navigation */}
-            <nav className="nav desktop-nav">
-              <div className="nav-links">
-                <a href="#products">Products</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-              </div>
-            </nav>
+              {/* Десктопная навигация — только на десктопе */}
+              <nav className="desktop-nav">
+                <div className="nav-links">
+                  <a href="#products" onClick={handleLinkClick}>
+                    Products
+                  </a>
+                  <a href="#about" onClick={handleLinkClick}>
+                    About
+                  </a>
+                  <a href="#contact" onClick={handleLinkClick}>
+                    Contact
+                  </a>
+                </div>
+              </nav>
+            </div>
           </div>
         </header>
 
         {/* Mobile Menu Overlay */}
-        <div 
-          className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`}
+        <div
+          className={`mobile-menu-overlay ${mobileMenuOpen ? "open" : ""}`}
           onClick={() => setMobileMenuOpen(false)}
         />
 
         {/* Mobile Menu */}
-        <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
+        <nav className={`mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-nav-header">
             <div className="logo">ZimAI</div>
-            <button 
+            <button
               className="close-menu"
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close menu"
@@ -136,9 +154,15 @@ export default function LandingPage({ onTryChat }) {
             </button>
           </div>
           <div className="mobile-nav-links">
-            <a href="#products" onClick={handleLinkClick}>Products</a>
-            <a href="#about" onClick={handleLinkClick}>About</a>
-            <a href="#contact" onClick={handleLinkClick}>Contact</a>
+            <a href="#products" onClick={handleLinkClick}>
+              Products
+            </a>
+            <a href="#about" onClick={handleLinkClick}>
+              About
+            </a>
+            <a href="#contact" onClick={handleLinkClick}>
+              Contact
+            </a>
           </div>
         </nav>
 
