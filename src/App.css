@@ -71,17 +71,17 @@ body,
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.4rem 0;
-  background: linear-gradient(
+  height: auto; /* или фиксированная высота, если нужно */
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  mask-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.45) 0%,
-    /* верх — заметный полупрозрачный */ rgba(0, 0, 0, 0.25) 40%,
-    /* середина — слабее */ rgba(0, 0, 0, 0.08) 70%,
-    /* почти прозрачно */ rgba(0, 0, 0, 0) 100% /* полностью прозрачно внизу */
+    black 60%,
+    /* полный эффект до 60% высоты */ transparent 100% /* затухает к нулю */
   );
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); /* для Safari */
-  border-bottom: none; /* убираем любую линию */
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  border-bottom: none;
   /* backdrop-filter: blur(12px); */
 }
 
