@@ -373,6 +373,9 @@ footer {
     font-size: 2.4rem;
     color: #a78bfa;
     transition: all 0.3s ease;
+    /* new */
+    width: 30.8px !important; /* 44px * 0.7 для согласованности с уменьшением хедера */
+    height: 30.8px !important;
   }
 
   .close-menu:hover {
@@ -429,6 +432,10 @@ footer {
     /* padding: 1.2rem 1.5rem !important; ← добавь отступы по бокам */
     position: relative !important;
     z-index: 1001 !important; /* ← поверх всего */
+    /* new */
+    padding-top: 0.875rem !important; /* 1.25rem * 0.7 */
+    padding-bottom: 0.7rem !important; /* 1rem * 0.7 */
+    margin-bottom: 1.05rem !important; /* 1.5rem * 0.7 */
   }
 
   .hamburger-menu {
@@ -443,6 +450,22 @@ footer {
     z-index: 1002 !important;
     /* для отладки — раскомментировать */
     /* background: rgba(255,0,0,0.4) !important; */
+    /* new */
+    padding: 7px !important; /* 10px * 0.7 */
+  }
+  /* new */
+  .hamburger-line {
+    width: 16.8px !important; /* 24px * 0.7 */
+    height: 1.75px !important; /* 2.5px * 0.7 */
+    margin: 2.8px 0 !important; /* 4px * 0.7 */
+  }
+
+  .hamburger-line.open:nth-child(1) {
+    transform: translateY(7.35px) rotate(45deg) !important; /* 10.5px * 0.7 */
+  }
+
+  .hamburger-line.open:nth-child(3) {
+    transform: translateY(-7.35px) rotate(-45deg) !important;
   }
 
   .logo {

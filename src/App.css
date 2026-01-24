@@ -72,9 +72,17 @@ body,
   right: 0;
   z-index: 100;
   padding: 1.4rem 0;
-  /* background: rgba(0, 0, 0, 0.4); */
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    /* верх — заметный полупрозрачный */ rgba(0, 0, 0, 0.25) 40%,
+    /* середина — слабее */ rgba(0, 0, 0, 0.08) 70%,
+    /* почти прозрачно */ rgba(0, 0, 0, 0) 100% /* полностью прозрачно внизу */
+  );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* для Safari */
+  border-bottom: none; /* убираем любую линию */
+  /* backdrop-filter: blur(12px); */
 }
 
 /* Шапка навигации */
@@ -152,12 +160,16 @@ body,
   padding: 1rem 2.6rem;
   font-size: 1.05rem;
   font-weight: 500;
-  background: linear-gradient(
-    135deg,
-    #604c79,
-    #7f69a5
+  background: 
+  /* linear-gradient(135deg, #604c79, #4f367a)ё */ rgba(
+    255,
+    255,
+    255,
+    0.08
   ); /* очень мягкий, приглушённый фиолетовый */
-  border: 1px solid rgba(106, 76, 158, 0.25); /* почти незаметная граница */
+
+  /* border: 1px solid rgba(106, 76, 158, 0.25); почти незаметная граница */
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50px;
   color: #f5f0ff; /* нежный лавандовый текст */
   box-shadow: 0 4px 16px rgba(106, 76, 158, 0.12); /* лёгкая, воздушная тень */
@@ -175,6 +187,7 @@ body,
   text-align: left; /* ← выравнивание по левому краю */
   width: 100%;
   max-width: 180px; /* фиксированная ширина для единообразия */
+  opacity: 0.9;
 }
 
 .btn.try-now:hover {
