@@ -157,45 +157,35 @@ body,
 /* Кнопка "Попробовать сейчас" — в палитре сайта и фона */
 /* Кнопка "Попробовать сейчас" — мягкая, нежная, аккуратная */
 .btn.try-now {
-  padding: 1rem 2.6rem;
-  font-size: 1.05rem;
-  font-weight: 500;
-  background: 
-  /* linear-gradient(135deg, #604c79, #4f367a)ё */ rgba(
-    255,
-    255,
-    255,
-    0.08
-  ); /* очень мягкий, приглушённый фиолетовый */
-
-  /* border: 1px solid rgba(106, 76, 158, 0.25); почти незаметная граница */
+  padding: 0.9rem 2.1rem;
+  font-size: 1.02rem;
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50px;
-  color: #f5f0ff; /* нежный лавандовый текст */
-  box-shadow: 0 4px 16px rgba(106, 76, 158, 0.12); /* лёгкая, воздушная тень */
-  backdrop-filter: blur(8px);
-  transition:
-    all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-    /* очень плавная основная анимация */ background 0.55s ease-in-out,
-    /* отдельно плавное изменение цвета */ box-shadow 0.55s ease-in-out;
+  color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* очень упругая, приятная анимация */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* Контейнер кнопки — всегда внизу, слева */
+  margin-top: auto;
+  /* text-align: left; ← выравнивание по левому краю */
   /* width: auto; ширина = длине текста + padding */
-  /* min-width: 50px; минимальная ширина для единообразия */
+  min-width: 10px; /* минимальная ширина для единообразия */
   padding: 0.9rem 1.8rem;
   margin: 0; /* убираем лишние отступы */
   /* text-align: center; */
-  /* margin-top: auto; */
+  margin-top: auto;
   text-align: left; /* ← выравнивание по левому краю */
   width: 100%;
   max-width: 180px; /* фиксированная ширина для единообразия */
-  opacity: 0.9;
 }
 
 .btn.try-now:hover {
   transform: translateY(-3px) scale(1.025); /* лёгкий подъём + минимальное увеличение */
   background: linear-gradient(
     135deg,
-    #6a4c9e,
-    #8a6cd8
+    #8c6cc4,
+    #987eda
   ); /* плавный, спокойный сдвиг к более светлому */
   border-color: rgba(138, 108, 216, 0.45);
   box-shadow: 0 12px 32px rgba(106, 76, 158, 0.28);

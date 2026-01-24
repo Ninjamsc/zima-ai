@@ -191,7 +191,7 @@ footer {
    ========================================== */
 
 .mobile-nav {
-  display: none;
+  /* display: none; */
   position: fixed;
   top: 0;
   left: -100%;
@@ -230,26 +230,30 @@ footer {
 }
 
 .close-menu {
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
+  width: 38px; /* было ~44–48 px → уменьшено на ~20–30% */
+  height: 38px;
+  font-size: 1.9rem; /* было ~2.4–2.8rem → уменьшено */
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(124, 58, 237, 0.12);
+  border-radius: 50%;
+  border: none;
+  color: #c4b5fd;
+  cursor: pointer;
   transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s ease;
   line-height: 1;
   padding: 0;
 }
 
 .close-menu:hover {
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
   color: #7c3aed;
+  background: rgba(124, 58, 237, 0.28);
+  transform: scale(1.1);
 }
 
 .close-menu:active {
@@ -342,18 +346,23 @@ footer {
   }
 
   .mobile-nav {
-    display: block;
+    position: fixed;
+    top: 0;
     left: -100%;
-    width: 82vw; /* чуть уже, современнее */
+    width: 82vw;
     max-width: 320px;
-    background: linear-gradient(135deg, #0a0015, #140033);
-    backdrop-filter: blur(24px);
-    border-right: 1px solid rgba(124, 58, 237, 0.28);
-    box-shadow: 6px 0 40px rgba(0, 0, 0, 0.75);
+    height: 100dvh;
+    background: linear-gradient(145deg, #0b0018, #12002b);
+    backdrop-filter: blur(22px);
+    border-right: 1px solid rgba(124, 58, 237, 0.32);
+    z-index: 999;
+    transition: left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); /* тот же easing, что у крестика */
+    overflow-y: auto;
   }
 
   .mobile-nav.open {
-    left: 0;
+    /* transform: rotate(90deg); */
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); /* out-back эффект */
   }
 
   .mobile-nav-header {
@@ -365,8 +374,21 @@ footer {
     font-size: 2.1rem;
     background: linear-gradient(90deg, #9f7aea, #7c3aed);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+  }
+
+  /* Состояние открытого меню — крестик повёрнут */
+  .mobile-nav.open .close-menu {
+    transform: rotate(90deg);
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); /* out-back эффект */
+  }
+
+  /* При закрытии — возвращаем в исходное положение */
+  .mobile-nav:not(.open) .close-menu {
+    transform: rotate(0deg);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); /* плавный возврат */
   }
 
   .close-menu {
@@ -374,7 +396,7 @@ footer {
     color: #a78bfa;
     transition: all 0.3s ease;
     /* new */
-    width: 30.8px !important; /* 44px * 0.7 для согласованности с уменьшением хедера */
+    width: 30.8px !important; /*44px * 0.7 для согласованности с уменьшением хедера */
     height: 30.8px !important;
   }
 
@@ -426,7 +448,11 @@ footer {
   /* Top bar перестройка */
   .top-bar {
     display: flex !important;
-    justify-content: space-between !important;
+    /* justify-content: space-between !important; */
+    justify-content: flex-start; /* начинаем слева */
+    gap: 16px; /* расстояние между гамбургером и логотипом */
+    padding-left: 16px; /* отступ слева от края экрана */
+    padding-right: 16px; /* такой же отступ справа от края экрана */
     align-items: center !important;
     width: 100% !important;
     /* padding: 1.2rem 1.5rem !important; ← добавь отступы по бокам */
@@ -451,7 +477,8 @@ footer {
     /* для отладки — раскомментировать */
     /* background: rgba(255,0,0,0.4) !important; */
     /* new */
-    padding: 7px !important; /* 10px * 0.7 */
+    padding: 7px !important; /*10px * 0.7
+    margin-right: 0; /* убираем лишний margin справа от гамбургера */
   }
   /* new */
   .hamburger-line {
@@ -470,10 +497,14 @@ footer {
 
   .logo {
     order: 2 !important;
-    /* margin: 0 auto !important; центр, если хочешь */
+    margin: 1 auto !important; /*центр, если хочешь */
     font-size: 1.9rem !important;
-    text-align: center !important;
+    text-align: left !important;
     flex: 1 !important;
+    margin-left: 1; /* убираем авто-отступы */
+    margin-right: 0; /*auto; /* толкает всё остальное вправо, если нужно */
+    text-align: left; /* логотип выравнивается по левому краю */
+    font-size: 1.9rem; /* или ваш текущий размер */
   }
 
   /* убираем десктоп нав полностью */
